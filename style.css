@@ -1,0 +1,206 @@
+:root {
+    --primary: #0a4420;
+    --accent: #ffc107;
+    --background: #f2f2f2;
+    --text: #222222;
+}
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    padding-top: 60px;
+}
+ 
+/* Navigation bar */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+ 
+header h2 {
+    color: var(--accent);
+}
+ 
+nav {
+    color: white;
+}
+ 
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+ 
+nav a:hover {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+ 
+/* Hero section */
+#home {
+    background: linear-gradient(to right, #0a1f44, #1e4fa3);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+ 
+#home h1 {
+    margin-bottom: 15px;
+}
+ 
+#home p {
+    margin-bottom: 25px;
+}
+ 
+#home a {
+    background-color: var(--accent);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+ 
+#home a:hover {
+    background-color: white;
+}
+ 
+/* Sections */
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+#home {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+ 
+h2 {
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+ 
+h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+ 
+ul {
+    margin-left: 25px;
+}
+ 
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+ 
+th, td {
+    border: 1px solid #999;
+    padding: 8px;
+    text-align: center;
+}
+ 
+th {
+    background-color: var(--primary);
+    color: white;
+}
+ 
+tr:hover {
+    background-color: #fff3cd;
+}
+ 
+td a {
+    color: var(--primary);
+    font-weight: bold;
+}
+ 
+/* Form */
+form label {
+    font-weight: bold;
+}
+ 
+input, select {
+    padding: 8px;
+    margin-top: 5px;
+    width: 300px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+ 
+#teamFilter {
+    width: auto;
+}
+ 
+button {
+    background-color: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+ 
+button:hover {
+    background-color: var(--primary);
+    color: white;
+}
+ 
+/* Booking summary */
+aside {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+aside h2, aside h3 {
+    color: var(--accent);
+}
+ 
+/* Guidelines cards */
+article {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: var(--background);
+}
+ 
+/* Footer */
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+ 
