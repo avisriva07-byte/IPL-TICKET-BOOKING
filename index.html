@@ -1,161 +1,350 @@
-// ==========================================
-// IPL Ticket Booking - JavaScript
-// Activity 5: JavaScript Basics and User Interaction
-// Activity 7: Selector Forms and Live Interaction
-// ==========================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Indian Premier League 2026 Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER AND NAVIGATION BAR -->
+
+    <header>
+
+        <h2>IPL 2026</h2>
+
+        <nav>
+            <a href="#matches">Matches</a> |
+            <a href="#booking">Book Ticket</a> |
+            <a href="#mybookings">My Bookings</a> |
+            <a href="#guidelines">Guidelines</a>
+        </nav>
+
+    </header>
 
 
-// Reusable function to display toast notifications
-function showToast(message) {
-    // Remove any existing toast so messages don't stack on top of each other
-    const oldToast = document.querySelector(".toast-message");
-    if (oldToast) {
-        oldToast.remove();
-    }
+    <section id="home">
 
-    const toast = document.createElement("div");
-    toast.className = "toast-message";
+        <h1>Experience The Stadium Energy Live!</h1>
 
-    toast.textContent = message;
+        <p>Watch your favourite IPL teams compete live in the stadium.</p>
 
-    toast.style.position = "fixed";
-    toast.style.bottom = "30px";
-    toast.style.right = "30px";
-    toast.style.backgroundColor = "#0a4420";
-    toast.style.color = "white";
-    toast.style.padding = "15px 25px";
-    toast.style.borderRadius = "5px";
-    toast.style.fontSize = "16px";
-    toast.style.zIndex = "1000";
-    toast.style.boxShadow = "0 3px 10px rgba(0,0,0,0.3)";
+        <a href="#matches">View Schedule</a>
 
-    document.body.appendChild(toast);
+        <a href="#booking">Book Ticket</a>
 
-    // Remove toast after 3 seconds
-    setTimeout(function () {
-        toast.remove();
-    }, 3000);
-}
+    </section>
 
 
-// Smooth scrolling for Book buttons
-const bookButtons = document.querySelectorAll('a[href="#booking"]');
+    <section id="about">
 
-bookButtons.forEach(function (button) {
-    button.addEventListener("click", function (event) {
+        <h2>About IPL 2026</h2>
 
-        // Prevent normal jump to the section
-        event.preventDefault();
+        <p>
+            The Indian Premier League (IPL) is one of the most
+            exciting T20 cricket tournaments in the world.
+            Experience the excitement of live cricket and
+            support your favourite teams.
+        </p>
 
-        // Find the booking section
-        const bookingSection = document.getElementById("booking");
+        <h3>Popular IPL Teams</h3>
 
-        // Smoothly scroll to booking section
-        bookingSection.scrollIntoView({
-            behavior: "smooth"
-        });
+        <ul>
+            <li>Chennai Super Kings (CSK)</li>
+            <li>Mumbai Indians (MI)</li>
+            <li>Royal Challengers Bengaluru (RCB)</li>
+            <li>Kolkata Knight Riders (KKR)</li>
+            <li>Sunrisers Hyderabad (SRH)</li>
+            <li>Rajasthan Royals (RR)</li>
+            <li>Delhi Capitals (DC)</li>
+            <li>Punjab Kings (PBKS)</li>
+            <li>Gujarat Titans (GT)</li>
+            <li>Lucknow Super Giants (LSG)</li>
+        </ul>
 
-        // Display confirmation toast
-        showToast("Redirecting to the ticket booking form...");
-    });
-});
+        <h3>Major Match Venues</h3>
 
+        <ul>
+            <li>M. A. Chidambaram Stadium, Chennai</li>
+            <li>Wankhede Stadium, Mumbai</li>
+            <li>M. Chinnaswamy Stadium, Bengaluru</li>
+            <li>Eden Gardens, Kolkata</li>
+            <li>Narendra Modi Stadium, Ahmedabad</li>
+        </ul>
 
-// ==========================================
-// Activity 7: Live Booking Summary
-// ==========================================
-
-// Ticket prices per match and stand (same as the schedule table)
-const ticketPrices = {
-    "CSK vs MI":  { General: 800,  Premium: 1500, VIP: 3000 },
-    "RCB vs KKR": { General: 1000, Premium: 1800, VIP: 3500 },
-    "MI vs KKR":  { General: 900,  Premium: 1400, VIP: 2800 },
-    "SRH vs RR":  { General: 700,  Premium: 1600, VIP: 3200 }
-};
-
-// Select the form controls
-const matchSelect = document.getElementById("match");
-const standSelect = document.getElementById("stand");
-const quantityInput = document.getElementById("quantity");
-
-// Select the Booking Summary elements
-const summaryMatch = document.getElementById("summaryMatch");
-const summaryStand = document.getElementById("summaryStand");
-const summaryPrice = document.getElementById("summaryPrice");
-const summaryQuantity = document.getElementById("summaryQuantity");
-const summaryTotal = document.getElementById("summaryTotal");
+    </section>
 
 
-// Read the current choices, calculate the total, update the summary card
-function updateSummary(showMessage) {
-    const match = matchSelect.value;
-    const stand = standSelect.value;
+    <section id="matches">
 
-    // Keep quantity between 0 and 10
-    let quantity = parseInt(quantityInput.value);
-    if (isNaN(quantity) || quantity < 0) {
-        quantity = 0;
-    }
-    if (quantity > 10) {
-        quantity = 10;
-        quantityInput.value = 10;
-    }
+        <h2>IPL Match Schedule</h2>
 
-    // Look up the price only if both match and stand are selected
-    let price = 0;
-    if (match !== "" && stand !== "") {
-        price = ticketPrices[match][stand];
-    }
+        <label for="teamFilter">Filter by Team:</label>
 
-    const total = price * quantity;
+        <select id="teamFilter">
 
-    // Display the details in the Booking Summary Card
-    summaryMatch.textContent = match !== "" ? match : "Not Selected";
-    summaryStand.textContent = stand !== "" ? stand : "Not Selected";
-    summaryPrice.textContent = "₹" + price;
-    summaryQuantity.textContent = quantity;
-    summaryTotal.textContent = "₹" + total;
+            <option value="all">All Teams</option>
+            <option value="CSK">Chennai Super Kings</option>
+            <option value="MI">Mumbai Indians</option>
+            <option value="RCB">Royal Challengers Bengaluru</option>
+            <option value="KKR">Kolkata Knight Riders</option>
+            <option value="SRH">Sunrisers Hyderabad</option>
+            <option value="RR">Rajasthan Royals</option>
+            <option value="DC">Delhi Capitals</option>
+            <option value="PBKS">Punjab Kings</option>
+            <option value="GT">Gujarat Titans</option>
+            <option value="LSG">Lucknow Super Giants</option>
 
-    if (showMessage) {
-        showToast("Booking summary updated! Total: ₹" + total);
-    }
-}
+        </select>
+
+        <br><br>
+
+        <table border="1">
+
+            <thead>
+
+                <tr>
+                    <th>Match Number</th>
+                    <th>Teams</th>
+                    <th>Date &amp; Time</th>
+                    <th>Venue</th>
+                    <th>General</th>
+                    <th>Premium</th>
+                    <th>VIP</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>1</td>
+                    <td>CSK vs MI</td>
+                    <td>10 April 2026, 7:30 PM</td>
+                    <td>Chennai</td>
+                    <td>₹800</td>
+                    <td>₹1500</td>
+                    <td>₹3000</td>
+                    <td><a href="#booking">Book</a></td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>RCB vs KKR</td>
+                    <td>12 April 2026, 7:30 PM</td>
+                    <td>Bengaluru</td>
+                    <td>₹1000</td>
+                    <td>₹1800</td>
+                    <td>₹3500</td>
+                    <td><a href="#booking">Book</a></td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>MI vs KKR</td>
+                    <td>15 April 2026, 3:30 PM</td>
+                    <td>Mumbai</td>
+                    <td>₹900</td>
+                    <td>₹1400</td>
+                    <td>₹2800</td>
+                    <td><a href="#booking">Book</a></td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>SRH vs RR</td>
+                    <td>18 April 2026, 7:30 PM</td>
+                    <td>Hyderabad</td>
+                    <td>₹700</td>
+                    <td>₹1600</td>
+                    <td>₹3200</td>
+                    <td><a href="#booking">Book</a></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <p>
+            Note: Match dates and ticket prices are illustrative
+            sample data for this assignment.
+        </p>
+
+    </section>
 
 
-// Update the summary live whenever the user changes a selection
-matchSelect.addEventListener("change", function () {
-    updateSummary(true);
-});
+    <section id="booking">
 
-standSelect.addEventListener("change", function () {
-    updateSummary(true);
-});
+        <h2>Book Your IPL Tickets</h2>
 
-quantityInput.addEventListener("change", function () {
-    updateSummary(true);
-});
+        <form>
 
-// Also update while typing / using the arrow buttons in the quantity box
-quantityInput.addEventListener("input", function () {
-    updateSummary(false);
-});
+            <label for="match">Select Match:</label>
+
+            <select id="match" name="match">
+
+                <option value="">Choose Match</option>
+                <option value="CSK vs MI">CSK vs MI</option>
+                <option value="RCB vs KKR">RCB vs KKR</option>
+                <option value="MI vs KKR">MI vs KKR</option>
+                <option value="SRH vs RR">SRH vs RR</option>
+
+            </select>
+
+            <br><br>
+
+            <label for="stand">Stand Category:</label>
+
+            <select id="stand" name="stand">
+
+                <option value="">Choose Stand</option>
+                <option value="General">General</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+
+            </select>
+
+            <br><br>
+
+            <label for="quantity">Number of Tickets:</label>
+
+            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+
+            <br><br>
+
+            <label for="name">Full Name:</label>
+
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <br><br>
+
+            <label for="email">Email Address:</label>
+
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <br><br>
+
+            <label for="phone">Phone Number:</label>
+
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+            <br><br>
+
+            <button type="submit">Confirm Booking</button>
+
+        </form>
+
+    </section>
 
 
-// Confirmation toast when booking form is submitted
-const bookingForm = document.querySelector("#booking form");
+    <aside id="summary">
 
-if (bookingForm) {
-    bookingForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+        <h2>Booking Summary</h2>
 
-        showToast("Ticket booking submitted successfully!");
+        <p>Match: <span id="summaryMatch">Not Selected</span></p>
 
-        // Reset the form and the summary card
-        bookingForm.reset();
-        updateSummary(false);
-    });
-}
+        <p>Stand Category: <span id="summaryStand">Not Selected</span></p>
+
+        <p>Ticket Price: <span id="summaryPrice">₹0</span></p>
+
+        <p>Quantity: <span id="summaryQuantity">0</span></p>
+
+        <h3>Total Amount: <span id="summaryTotal">₹0</span></h3>
+
+    </aside>
 
 
-// Set the summary to its starting state when the page loads
-updateSummary(false);
+    <section id="mybookings">
+
+        <h2>My Ticket Bookings</h2>
+
+        <table border="1">
+
+            <thead>
+
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Match</th>
+                    <th>Stand Category</th>
+                    <th>Number of Tickets</th>
+                    <th>Total Amount</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <!-- Future booking records will appear here -->
+
+            </tbody>
+
+        </table>
+
+        <p>No bookings available yet.</p>
+
+    </section>
+
+
+    <!-- GUIDELINES SECTION -->
+
+    <section id="guidelines">
+
+        <h2>Stadium Guidelines</h2>
+
+        <article>
+
+            <h3>Ticket Verification</h3>
+
+            <p>
+                Carry your valid ticket while entering
+                the stadium. Tickets will be verified
+                at the entrance.
+            </p>
+
+        </article>
+
+        <article>
+
+            <h3>ID Proof Requirement</h3>
+
+            <p>
+                Visitors must carry a valid government-issued
+                identity proof for verification.
+            </p>
+
+        </article>
+
+        <article>
+
+            <h3>Prohibited Items</h3>
+
+            <p>
+                Outside food, sharp objects, fireworks
+                and other restricted items are not allowed
+                inside the stadium.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 IPL Ticket Booking.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
